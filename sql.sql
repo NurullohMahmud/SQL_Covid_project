@@ -1,4 +1,6 @@
-select location, date, continent
+-- Let's see the data we are working with
+
+select *
 from sql_project.coviddeaths;
 
 -- Let's select data we'll be using
