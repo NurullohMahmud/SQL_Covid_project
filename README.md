@@ -1,1 +1,1 @@
-# SQL_Covid_project
+# MySql_Covid_project
