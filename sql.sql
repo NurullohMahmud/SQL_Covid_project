@@ -36,5 +36,12 @@ group by location
 order by DeathCount desc;
 
 
+-- Global death percentage
+
+select sum(new_cases) as total_cases, sum(convert(new_deaths, unsigned integer)) as total_deaths, 
+sum(convert(new_deaths, unsigned integer))/sum(new_cases)*100 as death_percentage
+from sql_project.coviddeaths
+where continent is not null
+order by 1,2;
 
 
