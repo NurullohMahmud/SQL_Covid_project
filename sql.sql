@@ -44,4 +44,15 @@ from sql_project.coviddeaths
 where continent is not null
 order by 1,2;
 
+-- Total population vs Vaccination
+-- We need to join 2nd table to show what percentage of population received at least one vaccination
+
+SELECT deaths.continent, deaths.location, deaths.date, deaths.population, vacs.new_vaccinations,
+sum(convert(vacs.new_vaccinations, unsigned integer)) over (partition by deaths.location order by deaths.location, deaths.date) as PeopleVaccinated
+FROM sql_project.coviddeaths as deaths
+join sql_project.covidvaccinationts as vacs
+on deaths.location = vacs.location
+and deaths.date = vacs.date
+where deaths.continent is not null 
+order by 2, 3;
 
